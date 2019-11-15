@@ -3,6 +3,7 @@ import UserTable from './components/tables/UserTable'
 import AddUserForm from './components/forms/AddUserForm'
 import EditUserForm from './components/forms/EditUserForm'
 import './App.scss'
+const randomInt = require('random-int');
 
 function App() {
 
@@ -15,10 +16,10 @@ function App() {
 
   const [users, setUsers] = useState(userData);
   const [editing, setEditing] = useState(false);
-  const [currentUser, setCurrentUser] = useState(initialFormState)
+  const [currentUser, setCurrentUser] = useState(initialFormState);
 
   const addUser = (user) => {
-    user.id = users.length + 1;
+    user.id = randomInt(100);
     setUsers([...users, user]);
     // console.log(user);
   }
@@ -34,7 +35,7 @@ function App() {
   }
 
   const updateUser = (id, updatedUser) => {
-    console.log(updatedUser);
+    // console.log(updatedUser);
     setUsers(users.map(user => (user.id === id ? updatedUser : user )));
     setEditing(false);
     
